@@ -1,1 +1,2 @@
-zabbix-3.4.10/
+zabbix-*
+*.tar.gz
