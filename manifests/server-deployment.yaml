@@ -1,0 +1,55 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: zabbix-server
+  namespace: $NS
+  labels:
+    app: zabbix-server
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: zabbix-server
+    spec:
+      containers:
+      - name: zabbix-server
+#        image: zabbix/zabbix-appliance:alpine-3.4.10
+        image: zabbix/zabbix-appliance:alpine-trunk # 4.0
+#        resources:
+#          limits:
+#            cpu: 100m
+#            memory: 100Mi
+#          requests:
+#            cpu: 100m
+#            memory: 100Mi
+#        readinessProbe:
+#          httpGet:
+#            path: /
+#            port: 80
+#          initialDelaySeconds: 60
+#          timeoutSeconds: 15
+#        env:
+#        - name: PHP_TZ
+#          value: $PHP_TZ
+#        - name: ZBX_SERVER_HOST
+#          value: zabbix-server
+#        - name: ZBX_SERVER_PORT
+#          value: 10051
+#        - name: DB_SERVER_HOST
+#          value: $DB_SERVER_HOST
+#        - name: MYSQL_USER
+#          value: $MYSQL_USER
+#        - name: MYSQL_PASSWORD
+#          value: $MYSQL_PASSWORD
+#        - name: MYSQL_DATABASE
+#          value: $MYSQL_DATABASE
+
+
+#        volumeMounts:
+#          - name: grafana-persistent-storage
+#            mountPath: /var/lib/grafana
+#      volumes:
+#      - name: grafana-persistent-storage
+#        persistentVolumeClaim:
+#          claimName: grafana-persistent-storage
