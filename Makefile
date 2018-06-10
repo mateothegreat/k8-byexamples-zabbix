@@ -13,17 +13,11 @@ include .make/Makefile.inc
 NS                  ?= default
 APP                 ?= zabbix-server
 
-DB_SERVER_HOST		?= mysql.devqa.streaming-platform.com
-MYSQL_USER			?= root
-MYSQL_PASSWORD		?= agaeq14
-MYSQL_DATABASE		?= zabbix3
+DB_SERVER_HOST		?=
+MYSQL_USER			?=
+MYSQL_PASSWORD		?=
+MYSQL_DATABASE		?=
 PHP_TZ				?= America/Chicago
-
-#source-download:
-#
-#	wget https://cytranet.dl.sourceforge.net/project/zabbix/ZABBIX%20Latest%20Development/4.0.0alpha7/zabbix-4.0.0alpha7.tar.gz
-#	tar -xvzf zabbix-4.0.0alpha7.tar.gz
-#	rm -rf zabbix-4.0.0alpha7.tar.gz
 
 source-download:
 
@@ -31,12 +25,10 @@ source-download:
 	tar -xvzf zabbix-3.4.10.tar.gz
 	rm -rf zabbix-3.4.10.tar.gz
 
-prepare:
+prepare: source-download
 
 	mysql -h $(DB_SERVER_HOST) -u $(MYSQL_USER) -p$(MYSQL_PASSWORD) $(MYSQL_DATABASE) < zabbix-3.4.10/database/mysql/schema.sql
 	mysql -h $(DB_SERVER_HOST) -u $(MYSQL_USER) -p$(MYSQL_PASSWORD) $(MYSQL_DATABASE) < zabbix-3.4.10/database/mysql/images.sql
 	mysql -h $(DB_SERVER_HOST) -u $(MYSQL_USER) -p$(MYSQL_PASSWORD) $(MYSQL_DATABASE) < zabbix-3.4.10/database/mysql/data.sql
 
-shell/server:
-
-	kubectl
+	rm -rf zabbix-3.4.10

@@ -14,8 +14,8 @@ spec:
     spec:
       containers:
       - name: zabbix-web
-#        image: zabbix/zabbix-web-nginx-mysql:alpine-3.4.10
-        image: zabbix/zabbix-web-nginx-mysql:alpine-trunk # 4.0
+        image: zabbix/zabbix-web-nginx-mysql:alpine-3.4.10
+#        image: zabbix/zabbix-web-nginx-mysql:alpine-trunk # 4.0
         resources:
           limits:
             cpu: 100m
